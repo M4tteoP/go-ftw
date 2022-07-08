@@ -104,7 +104,7 @@ func (ll *FTWLogLines) CheckLogForMarker(stageID string) []byte {
 	// find the last non-empty line
 	for err == nil && len(line) == 0 {
 		line, _, err = scanner.LineBytes()
-		fmt.Println("Marker:", config.FTWConfig.LogMarkerHeaderName, "ID:", stageID, "New line:", line)
+		fmt.Println("Marker:", config.FTWConfig.LogMarkerHeaderName, "ID:", stageID, "New line:", string(line))
 	}
 	if err != nil {
 		if err == io.EOF {

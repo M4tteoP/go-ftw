@@ -2,6 +2,8 @@ module github.com/fzipi/go-ftw
 
 go 1.16
 
+replace github.com/fzipi/go-ftw => github.com/m4tteop/go-ftw v0.5.0
+
 require (
 	github.com/Masterminds/goutils v1.1.1 // indirect
 	github.com/Masterminds/semver v1.5.0 // indirect

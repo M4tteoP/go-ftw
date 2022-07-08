@@ -2,6 +2,7 @@ package waflog
 
 import (
 	"bytes"
+	"fmt"
 	"io"
 	"os"
 	"regexp"
@@ -103,6 +104,7 @@ func (ll *FTWLogLines) CheckLogForMarker(stageID string) []byte {
 	// find the last non-empty line
 	for err == nil && len(line) == 0 {
 		line, _, err = scanner.LineBytes()
+		fmt.Println("Marker:", config.FTWConfig.LogMarkerHeaderName, "ID:", stageID, "New line:", line)
 	}
 	if err != nil {
 		if err == io.EOF {
@@ -112,6 +114,7 @@ func (ll *FTWLogLines) CheckLogForMarker(stageID string) []byte {
 	}
 	line = bytes.ToLower(line)
 	if bytes.Contains(line, crsHeaderBytes) && bytes.Contains(line, stageIDBytes) {
+		fmt.Println("Match!")
 		return line
 	}
 

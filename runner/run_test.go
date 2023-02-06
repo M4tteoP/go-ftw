@@ -689,6 +689,8 @@ func TestApplyInputOverrideSetHostFromDestAddr(t *testing.T) {
 		},
 	}
 
+	testInput.Headers = ftwhttp.Header{}
+	testInput.Headers.Add("Host", originalHost)
 	err := applyInputOverride(cfg.TestOverride, &testInput)
 	assert.NoError(t, err, "Failed to apply input overrides")
 
